@@ -288,6 +288,16 @@ The proposed 3D CNN-LSTM architecture achieves **state-of-the-art** results on s
 
 </div>
 
+### Sample Detection Results
+
+<div align="center">
+
+<img src="results/samples_images.png" alt="Sample Detection Results" width="800"/>
+
+*Figure: Sample frames from the datasets showing normal and anomalous events detected by the proposed method.*
+
+</div>
+
 For detailed experimental validation and ablation studies, refer to the [full paper](Advanced%20Intelligent%20Systems%20-%202024%20-%20Ul%20Amin%20-%20Video%20Anomaly%20Detection%20Utilizing%20Efficient%20Spatiotemporal%20Feature%20Fusion.pdf).
 
 ---
