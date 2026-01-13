@@ -202,7 +202,7 @@ model.save("anomaly_mdel.h5")
 ### 4.3 Hyperparameters
 
 | Parameter | Default | Description |
-|--📊 Experimental Results
+|-- Experimental Results
 
 ### Benchmark Performance (Frame-Level AUC)
 
@@ -234,12 +234,7 @@ The proposed 3D CNN-LSTM architecture achieves **state-of-the-art** results on s
 | ResNet-50 + BD-LSTM | 25.00 | 143.00 | 200 |
 | **Proposed Method** | **0.224** | **2.83** | **160** |
 
-### Key Advantages
 
-- 🎯 **Efficient Feature Fusion**: sEnDec blocks enable simultaneous encoding/decoding
-- ⚡ **Lightweight Model**: Only 0.224M parameters (2.83 MB)
-- 📈 **Fast Inference**: 160ms per sequence (30 frames)
-- 🔍 **Superior Detection**: Significant reconstruction error for abnormal frames
 
 ### Anomaly Score Visualization
 
@@ -247,7 +242,7 @@ The proposed 3D CNN-LSTM architecture achieves **state-of-the-art** results on s
 
 <img src="results/ascore.png" alt="Anomaly Score Visualization" width="800"/>
 
-*Figure: Anomaly scores across video frames. The blue line represents the anomaly score, with peaks indicating detected anomalies. Ground truth anomalous regions are highlighted in cyan.*
+*Figure: a) The graph shows the abnormality score on test video 04 in the Avenue dataset. b) The graph displays the abnormality score on test video 23 in the UCSDPed1 dataset. c) The graph depicts the abnormality score on test video 02 in the UCSDPed2 dataset. The graph represents the ground truth anomalous frames in cyan. To make it more understandable, we normalized the abnormality scores for each video within the range of 0–1. The graph shown above displays that as abnormalities occur, the score of the abnormalities also increases.*
 
 </div>
 
@@ -265,25 +260,7 @@ For detailed experimental validation and ablation studies, refer to the [full pa
 
 ---
 
-## Citation
 
-If you find this work useful in your research, please cite:
-
-```bibtex
-@article{ulamin2024video,
-  title={Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion with 3D Convolutions and Long Short-Term Memory Modules},
-  author={Ul Amin, Sareer and Kim, Bumsoo and Jung, Yonghoon and Seo, Sanghyun and Park, Sangoh},
-  journal={Advanced Intelligent Systems},
-  volume={6},
-  number={7},
-  pages={2300706},
-  year={2024},
-  publisher={Wiley},
-  doi={10.1002/aisy.202300706}
-}
-```
-
-**Paper Link:** [Advanced Intelligent Systems - 2024 - Ul Amin - Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion.pdf](Advanced%20Intelligent%20Systems%20-%202024%20-%20Ul%20Amin%20-%20Video%20Anomaly%20Detection%20Utilizing%20Efficient%20Spatiotemporal%20Feature%20Fusion.pdf)5. Results & Visualization
 
 ### Reconstruction Comparison
 
@@ -291,8 +268,8 @@ The model reconstructs normal frames accurately while struggling with anomalous 
 
 | Original Frames | Reconstructed Frames | Reconstruction Error |
 |-----------------|---------------------|---------------------|
-| Normal activity | Low error | ✅ Normal |
-| Anomalous activity | High error | ⚠️ Anomaly Detected |
+| Normal activity | Low error |  Normal |
+| Anomalous activity | High error |  Anomaly Detected |
 
 ### Evaluation Metrics
 
@@ -313,33 +290,21 @@ plt.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_auc:.2f})')
 
 ```
 Video-Anomaly-Detection/
-├── model.ipynb              # 📓 Main notebook (training & evaluation)
-├── anomaly_mdel.h5          # 🧠 Pre-trained model weights
-├── requirements.txt         # 📦 Python dependencies
-├── README.md                # 📖 This file
-├── assets/                  # 🖼️ Images and diagrams
-│   └── architecture.png
-├── Avenue_Dataset/          # 📁 Avenue dataset
-├── Avenue/                  # 📁 Avenue dataset (alternate)
-├── ped1/                    # 📁 UCSD Ped1 dataset
-└── Ped2/                    # 📁 UCSD Ped2 dataset
+├── model.ipynb              #  Main notebook (training & evaluation)
+├── anomaly_mdel.h5          #  Pre-trained model weights
+├── requirements.txt         #  Python dependencies
+├── README.md                #  This file
+├── results/                  #  Images and diagrams
+│   └── framework.png
+│   └── ascore.png
+│   └── samples_images.png
+├── Avenue_Dataset/          #  Avenue dataset
+├── Avenue/                  #  Avenue dataset (alternate)
+├── ped1/                    #  UCSD Ped1 dataset
+└── Ped2/                    #  UCSD Ped2 dataset
 ```
 
----
 
-## Citation
-
-If you find this work useful in your research, please cite:
-
-```bibtex
-@article{ulamin2024video,
-  title={Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion},
-  author={Ul Amin, Sareer and others},
-  journal={Advanced Intelligent Systems},
-  year={2024},
-  publisher={Wiley}
-}
-```
 
 ---
 
@@ -356,7 +321,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - TensorFlow and Keras teams
 
 ---
+## Citation
 
+If you find this work useful in your research, please cite:
+
+```bibtex
+@article{ulamin2024video,
+  title={Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion with 3D Convolutions and Long Short-Term Memory Modules},
+  author={Ul Amin, Sareer and Kim, Bumsoo and Jung, Yonghoon and Seo, Sanghyun and Park, Sangoh},
+  journal={Advanced Intelligent Systems},
+  volume={6},
+  number={7},
+  pages={2300706},
+  year={2024},
+  publisher={Wiley},
+  doi={10.1002/aisy.202300706}
+}
+```
 <div align="center">
 
 **⭐ Star this repository if you find it helpful!**
