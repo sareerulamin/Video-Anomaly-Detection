@@ -8,49 +8,20 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/sareerulamin/Video-Anomaly-Detection?style=social)](https://github.com/sareerulamin/Video-Anomaly-Detection)
 
-Official implementation of **"Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion"** - *Advanced Intelligent Systems, 2024*
+This repository contains the official implementation of the paper: **"Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion with 3D Convolutions and Long Short-Term Memory Modules"** by *Sareer Ul Amin, Bumsoo Kim, Yonghoon Jung, Sanghyun Seo, Sangoh Park* - *Advanced Intelligent Systems, 2024*
 
-[Paper (PDF)](Advanced%20Intelligent%20Systems%20-%202024%20-%20Ul%20Amin%20-%20Video%20Anomaly%20Detection%20Utilizing%20Efficient%20Spatiotemporal%20Feature%20Fusion.pdf) | [Wiley Journal](https://onlinelibrary.wiley.com/journal/26404567) | [Dataset](#2-download-datasets)
+[Paper DOI:](https://doi.org/10.1002/aisy.202300706) | [Dataset](#2-download-datasets)
 
-<img src="assets/architecture.png" alt="Model Architecture" width="800"/>
+
 
 </div>
 
 ---
 
-## 📖 About This Paper
-
-This repository implements the methodology presented in **"Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion"** published in *Advanced Intelligent Systems* (2024). The paper proposes a novel approach to video anomaly detection by leveraging the sEnDec (Simultaneous Encoder-Decoder) architecture combined with ConvLSTM for efficient spatiotemporal feature fusion.
-
-**Key Contributions:**
-- Novel sEnDec architecture for efficient feature extraction
-- Integration of ConvLSTM for temporal dependency modeling
-- State-of-the-art performance on benchmark datasets
-- Efficient reconstruction-based anomaly detection framework
-
-📄 **Full Paper:** [Advanced Intelligent Systems - 2024 - Ul Amin - Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion.pdf](Advanced%20Intelligent%20Systems%20-%202024%20-%20Ul%20Amin%20-%20Video%20Anomaly%20Detection%20Utilizing%20Efficient%20Spatiotemporal%20Feature%20Fusion.pdf)
 
 ## Overview
 
-Thi🏗️ Technical Framework
-
-### sEnDec (Simultaneous Encoder-Decoder) Architecture
-
-The **sEnDec block** is the core innovation of this work, combining encoder and decoder operations simultaneously:
-
-```python
-def sendec_block(input_tensor1, input_tensor2):
-    # Decode previous features
-    x = Conv3DTranspose(filters=16, kernel_size=(2, 3, 3), 
-                        strides=(1, 2, 2), padding='same')(input_tensor1)
-    # Fuse with encoder features via concatenation
-    x = concatenate([input_tensor2, x], axis=-1)
-    # Refine fused features
-    x = BatchNormalization()(x)
-    x = Conv3D(filters=16, kernel_size=(1, 3, 3), 
-               activation='relu', padding='same')(x)
-    return x
-```
+Surveillance cameras produce vast amounts of video data, posing a challenge for analysts due to the infrequent occurrence of unusual events. To address this, intelligent surveillance systems leverage AI and computer vision to automatically detect anomalies. This study proposes an innovative method combining 3D convolutions and long short-term memory (LSTM) modules to capture spatiotemporal features in video data. Notably, a structured coarse-level feature fusion mechanism enhances generalization and mitigates the issue of vanishing gradients. Unlike traditional convolutional neural networks, the approach employs depth-wise feature stacking, reducing computational complexity and enhancing the architecture. Additionally, it integrates microautoencoder blocks for downsampling, eliminates the computational load of ConvLSTM2D layers, and employs frequent feature concatenation blocks during upsampling to preserve temporal information. Integrating a Conv-LSTM module at the down- and upsampling stages enhances the model's ability to capture short- and long-term temporal features, resulting in a 42-layer network while maintaining robust performance. Experimental results demonstrate significant reductions in false alarms and improved accuracy compared to contemporary methods, with enhancements of 2.7%, 0.6%, and 3.4% on the UCSDPed1, UCSDPed2, and Avenue datasets, respectively.
 
 ### Model Architecture
 
@@ -58,19 +29,11 @@ def sendec_block(input_tensor1, input_tensor2):
 
 <img src="results/framework.png" alt="sEnDec CNN-LSTM Framework" width="900"/>
 
-*Figure: Proposed sEnDec CNN-LSTM framework for video anomaly detection*
+*Figure: The proposed method integrates micro-AE blocks during downsampling, eliminates the computational load of ConvLSTM2D layers, and introduces frequent feature concatenation blocks during upsampling to retain temporal information. The incorporation of a Conv-LSTM module at the end of the down- and upsampling stages enhances the model's capacity to capture long–short-term temporal features.*
 
 </div>
 
-| Component | Details |
-|-----------|---------|
-| **Input Shape** | 4 consecutive grayscale frames (240×320) |
-| **Encoder Blocks** | 3× sEnDec blocks with progressive spatial downsampling |
-| **Temporal Layer** | ConvLSTM2D (16 filters, 3×3 kernel) for motion modeling |
-| **Decoder Path** | 4× Upsampling layers with skip connections from encoder |
-| **Output Shape** | Reconstructed frame sequence (4×240×320×1) |
-| **Activation** | ReLU (hidden layers), Sigmoid (output) |
-| **Normalization** | Batch Normalization between conv operations |
+
 
 ---
 
