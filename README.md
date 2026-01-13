@@ -199,10 +199,7 @@ model.fit(train_video, train_video,
 model.save("anomaly_mdel.h5")
 ```
 
-### 4.3 Hyperparameters
-
-| Parameter | Default | Description |
-|-- Experimental Results
+### 4.3 Experimental Results
 
 ### Benchmark Performance (Frame-Level AUC)
 
