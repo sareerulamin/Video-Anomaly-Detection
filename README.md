@@ -241,22 +241,52 @@ model.save("anomaly_mdel.h5")
 | Parameter | Default | Description |
 |--📊 Experimental Results
 
-### Benchmark Performance
+### Benchmark Performance (Frame-Level AUC)
 
-The proposed sEnDec CNN-LSTM architecture achieves competitive results on standard benchmarks:
+The proposed 3D CNN-LSTM architecture achieves **state-of-the-art** results on standard benchmarks:
 
-| Dataset | Metric | Performance |
-|---------|--------|-------------|
-| **Avenue** | AUC | 95.2% |
-| **UCSD Ped1** | AUC | 91.8% |
-| **UCSD Ped2** | AUC | 98.1% |
+| Dataset | AUC (%) | Improvement |
+|---------|---------|-------------|
+| **UCSD Ped1** | **94.5%** | +2.7% over prior methods |
+| **UCSD Ped2** | **96.8%** | +0.6% over prior methods |
+| **CUHK Avenue** | **93.0%** | +3.4% over prior methods |
 
-### Advantages
+### Comparison with State-of-the-Art Methods
+
+| Method | Ped1 | Ped2 | Avenue |
+|--------|------|------|--------|
+| Lu et al. | 91.8 | – | 80.9 |
+| Zhou et al. | 83.5 | 94.9 | 86.1 |
+| Tang et al. | 82.6 | 96.2 | 83.7 |
+| Wen et al. | 83.1 | 95.4 | 85.1 |
+| Yao et al. | 84.5 | 95.9 | 85.9 |
+| **Proposed Method** | **94.5** | **96.8** | **93.0** |
+
+### Model Efficiency
+
+| Model | Parameters (M) | Size (MB) | Time/Seq (ms) |
+|-------|----------------|-----------|---------------|
+| VGG19 + BD-LSTM | 143.00 | 605.50 | 220 |
+| Inception V3 + BD-LSTM | 23.00 | 148.50 | 180 |
+| ResNet-50 + BD-LSTM | 25.00 | 143.00 | 200 |
+| **Proposed Method** | **0.224** | **2.83** | **160** |
+
+### Key Advantages
 
 - 🎯 **Efficient Feature Fusion**: sEnDec blocks enable simultaneous encoding/decoding
-- ⚡ **Reduced Computation**: Lower memory footprint compared to standard encoder-decoder
-- 📈 **Superior Reconstruction**: Better reconstruction of normal patterns
-- 🔍 **Clear Anomaly Detection**: Significant reconstruction error for abnormal frames
+- ⚡ **Lightweight Model**: Only 0.224M parameters (2.83 MB)
+- 📈 **Fast Inference**: 160ms per sequence (30 frames)
+- 🔍 **Superior Detection**: Significant reconstruction error for abnormal frames
+
+### Anomaly Score Visualization
+
+<div align="center">
+
+<img src="results/ascore.png" alt="Anomaly Score Visualization" width="800"/>
+
+*Figure: Anomaly scores across video frames. The blue line represents the anomaly score, with peaks indicating detected anomalies. Ground truth anomalous regions are highlighted in cyan.*
+
+</div>
 
 For detailed experimental validation and ablation studies, refer to the [full paper](Advanced%20Intelligent%20Systems%20-%202024%20-%20Ul%20Amin%20-%20Video%20Anomaly%20Detection%20Utilizing%20Efficient%20Spatiotemporal%20Feature%20Fusion.pdf).
 
@@ -268,12 +298,15 @@ If you find this work useful in your research, please cite:
 
 ```bibtex
 @article{ulamin2024video,
-  title={Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion},
-  author={Ul Amin, Sareer and others},
+  title={Video Anomaly Detection Utilizing Efficient Spatiotemporal Feature Fusion with 3D Convolutions and Long Short-Term Memory Modules},
+  author={Ul Amin, Sareer and Kim, Bumsoo and Jung, Yonghoon and Seo, Sanghyun and Park, Sangoh},
   journal={Advanced Intelligent Systems},
+  volume={6},
+  number={7},
+  pages={2300706},
   year={2024},
   publisher={Wiley},
-  doi={https://doi.org/10.1002/aisy.202400045}
+  doi={10.1002/aisy.202300706}
 }
 ```
 
